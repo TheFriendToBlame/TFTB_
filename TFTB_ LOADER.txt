@@ -1,0 +1,129 @@
+-- Load the Orion Library
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+
+-- Create a new window
+local Window = OrionLib:MakeWindow({
+    Name = "Utilities", -- Window title
+    HidePremium = false, -- Show Premium status
+    SaveConfig = true, -- Save configuration
+    ConfigFolder = "MyConfigFolder" -- Config folder name
+})
+
+-- Create a MainTab
+local MainTab = Window:MakeMainTab({
+    Name = "Scripts", -- MainTab name
+    Icon = "rbxassetid://4483345998", -- Icon for the MainTab
+    PremiumOnly = false -- Make it accessible to Premium users only
+})
+
+-- Super secret key
+local superSecretKey = "Royal"
+
+-- Variable to store the entered key
+local enteredKey = ""
+
+-- Function to load and execute Infinite Yield script
+local function ExecuteScript()
+    local scriptUrl = 'https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'
+    local scriptContent = game:HttpGet(scriptUrl)
+    loadstring(scriptContent)()
+end
+
+-- Function to load and execute Zeke HUB script
+local function ZekeHUB()
+    local script_key = "uviFLoDifQxvVopDuWZykCabqUsYyLLE"
+    getgenv().script_key = script_key
+    local zekeHubUrl = "https://api.luarmor.net/files/v3/loaders/d416a9fb566c94cba596550ef09d256b.lua"
+    local zekeHubContent = game:HttpGet(zekeHubUrl)
+    loadstring(zekeHubContent)()
+end
+
+-- Function to load and execute Combat Warriors script
+local function CombatWarriors()
+    local script_key = "uMYOOqJxzVuhuUWwaicChYQahCxUJKoP"
+    getgenv().script_key = script_key
+    local combatWarriorsUrl = "https://api.luarmor.net/files/v3/loaders/0d277dd7dfd85038ddf079a3dce93798.lua"
+    local combatWarriorsContent = game:HttpGet(combatWarriorsUrl)
+    loadstring(combatWarriorsContent)()
+end
+
+-- Function to load and execute Maxhub script
+local function Maxhub()
+    local script_key = "uMYOOqJxzVuhuUWwaicChYQahCxUJKoP"
+    getgenv().script_key = script_key
+    local maxhubUrl = "https://api.luarmor.net/files/v3/loaders/993b07de445441e83e15ce5fde260d5f.lua"
+    local maxhubContent = game:HttpGet(maxhubUrl)
+    loadstring(maxhubContent)()
+end
+
+-- Add a textbox for the super secret key
+MainTab:AddTextbox({
+    Name = "Enter Super Secret Key",
+    Default = "",
+    TextDisappear = false,
+    Callback = function(value)
+        enteredKey = value -- Update the entered key
+    end
+})
+
+-- Add the first button
+MainTab:AddButton({
+    Name = "Load Infinite Yield",
+    Callback = function()
+        ExecuteScript() -- Call the function to execute the Infinite Yield script
+    end
+})
+
+-- Add the second button
+MainTab:AddButton({
+    Name = "Zeke HUB",
+    Callback = function()
+        if enteredKey == superSecretKey then
+            ZekeHUB() -- Call the function to execute the Zeke HUB script
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "Invalid key. Please enter the correct super secret key.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end
+})
+
+-- Add the third button
+MainTab:AddButton({
+    Name = "Combat Warriors",
+    Callback = function()
+        if enteredKey == superSecretKey then
+            CombatWarriors() -- Call the function to execute the Combat Warriors script
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "Invalid key. Please enter the correct super secret key.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end
+})
+
+-- Add the fourth button
+MainTab:AddButton({
+    Name = "Maxhub",
+    Callback = function()
+        if enteredKey == superSecretKey then
+            Maxhub() -- Call the function to execute the Maxhub script
+        else
+            OrionLib:MakeNotification({
+                Name = "Error",
+                Content = "Invalid key. Please enter the correct super secret key.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end
+})
+
+-- Initialize the Orion UI
+OrionLib:Init()
