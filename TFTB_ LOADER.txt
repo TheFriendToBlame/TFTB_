@@ -3,16 +3,16 @@ local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shle
 
 -- Create a new window
 local Window = OrionLib:MakeWindow({
-    Name = "Utilities", -- Window title
+    Name = "Button Actions", -- Window title
     HidePremium = false, -- Show Premium status
     SaveConfig = true, -- Save configuration
     ConfigFolder = "MyConfigFolder" -- Config folder name
 })
 
--- Create a MainTab
-local MainTab = Window:MakeMainTab({
-    Name = "Scripts", -- MainTab name
-    Icon = "rbxassetid://4483345998", -- Icon for the MainTab
+-- Create a tab
+local Tab = Window:MakeTab({
+    Name = "Actions", -- Tab name
+    Icon = "rbxassetid://4483345998", -- Icon for the tab
     PremiumOnly = false -- Make it accessible to Premium users only
 })
 
@@ -57,7 +57,7 @@ local function Maxhub()
 end
 
 -- Add a textbox for the super secret key
-MainTab:AddTextbox({
+Tab:AddTextbox({
     Name = "Enter Super Secret Key",
     Default = "",
     TextDisappear = false,
@@ -67,7 +67,7 @@ MainTab:AddTextbox({
 })
 
 -- Add the first button
-MainTab:AddButton({
+Tab:AddButton({
     Name = "Load Infinite Yield",
     Callback = function()
         ExecuteScript() -- Call the function to execute the Infinite Yield script
@@ -75,7 +75,7 @@ MainTab:AddButton({
 })
 
 -- Add the second button
-MainTab:AddButton({
+Tab:AddButton({
     Name = "Zeke HUB",
     Callback = function()
         if enteredKey == superSecretKey then
@@ -92,7 +92,7 @@ MainTab:AddButton({
 })
 
 -- Add the third button
-MainTab:AddButton({
+Tab:AddButton({
     Name = "Combat Warriors",
     Callback = function()
         if enteredKey == superSecretKey then
@@ -109,7 +109,7 @@ MainTab:AddButton({
 })
 
 -- Add the fourth button
-MainTab:AddButton({
+Tab:AddButton({
     Name = "Maxhub",
     Callback = function()
         if enteredKey == superSecretKey then
